@@ -60,6 +60,11 @@ async function renderPage(filePath, password) {
   } else {
     content = content.replace('{{PASSWORD}}', '');
   }
+  // 为 config.js 动态添加时间戳，修改 config.js 后自动生效
+  try {
+    const st = fs.statSync(path.join(__dirname, 'public', 'js', 'config.js'));
+    content = content.replace(/js\/config\.js(\?v=\d+)?/g, `js/config.js?v=${Math.floor(st.mtimeMs)}`);
+  } catch(_) {}
   return content;
 }
 
@@ -220,6 +225,30 @@ app.get('/proxy/:encodedUrl', async (req, res) => {
       res.status(500).send(`请求失败: ${error.message}`);
     }
   }
+});
+
+
+// 图片代理路由 - 解决豆瓣封面防盗链
+app.get('/imgproxy/:encodedUrl', async (req, res) => {
+    try {
+        const encodedUrl = req.params.encodedUrl;
+        const imageUrl = decodeURIComponent(encodedUrl);
+        let finalUrl = imageUrl.startsWith('//') ? 'https:' + imageUrl : imageUrl;
+        const response = await axios.get(finalUrl, {
+            responseType: 'arraybuffer',
+            timeout: 10000,
+            headers: {
+                'Referer': new URL(finalUrl).origin,
+                'User-Agent': config.userAgent
+            }
+        });
+        res.setHeader('Content-Type', response.headers['content-type'] || 'image/jpeg');
+        res.setHeader('Cache-Control', 'public, max-age=86400');
+        res.send(Buffer.from(response.data));
+    } catch (error) {
+        console.error('图片代理错误:', error.message);
+        res.status(500).send('图片加载失败');
+    }
 });
 
 app.use(express.static(path.join(__dirname), {
