@@ -22,12 +22,134 @@ const SITE_CONFIG = {
 
 // API站点配置
 const API_SITES = {
-    testSource: {
-        api: 'https://www.example.com/api.php/provide/vod',
-        name: '空内容测试源',
+    // === 官方内置接口 ===
+    bfzy: {
+        api: 'https://bfzyapi.com/api.php/provide/vod',
+        name: '暴风资源',
+        adult: false
+    },
+    qiqi: {
+        api: 'https://www.77dytt.com/api.php/provide/vod',
+        name: '七七资源',
+        adult: false
+    },
+    fnzy: {
+        api: 'https://bfzyapi.com/api.php/provide/vod',
+        name: '蜂鸟资源',
         adult: true
+    },
+
+    // === 用户提供的接口（去重后）===
+    lzizy: {
+        api: 'https://cj.lziapi.com/api.php/provide/vod/from/lzm3u8',
+        name: '量子资源',
+        adult: false
+    },
+    hnzy: {
+        api: 'https://hongniuzy2.com/api.php/provide/vod/from/hnm3u8',
+        name: '红牛资源',
+        adult: false
+    },
+    yzzy: {
+        api: 'https://api.1080zyku.com/inc/api.php/provide/vod',
+        name: '优质资源库',
+        adult: false
+    },
+    hwwk: {
+        api: 'https://haiwaikan.com/api.php/provide/vod',
+        name: '海外看资源',
+        adult: true
+    },
+    hme: {
+        api: 'https://www.heimuer.tv/api.php/provide/vod',
+        name: '黑木耳点播',
+        adult: false
+    },
+    zdzy: {
+        api: 'https://zuidazy.me/api.php/provide/vod',
+        name: '最大资源',
+        adult: false
+    },
+    zy360: {
+        api: 'https://360zyzz.com/api.php/provide/vod/from/360m3u8/at/json',
+        name: '360资源',
+        adult: false
+    },
+    jszy: {
+        api: 'https://jszyapi.com/api.php/provide/vod',
+        name: '极速资源',
+        adult: false
+    },
+    jyzy: {
+        api: 'https://jyzyapi.com/provide/vod/from/jinyingm3u8/at/json',
+        name: '金鹰资源',
+        adult: false
+    },
+    mtzy: {
+        api: 'https://caiji.maotaizy.cc/api.php/provide/vod/from/mtm3u8/at/json',
+        name: '茅台资源',
+        adult: false
+    },
+    ftzy: {
+        api: 'https://www.fantuan.tv/api.php/provide/vod',
+        name: '饭团影视',
+        adult: false
+    },
+    xjzy: {
+        api: 'https://api.xiaojizy.live/provide/vod',
+        name: '小鸡资源',
+        adult: true
+    },
+    bdzy: {
+        api: 'https://api.apibdzy.com/api.php/provide/vod',
+        name: '百度云资源',
+        adult: false
+    },
+    wjzy: {
+        api: 'https://api.wujinapi.com/api.php/provide/vod',
+        name: '无尽资源',
+        adult: false
+    },
+    lszy: {
+        api: 'https://apilsbzy1.com/api.php/provide/vod/at/json',
+        name: '老色资源',
+        adult: true
+    },
+    jczy: {
+        api: 'http://zy.jinchancaiji.com/api.php/provide/vod',
+        name: '金蝉资源',
+        adult: true
+    },
+    hlzy: {
+        api: 'https://www.heiliaozyapi.com/api.php/provide/vod',
+        name: '黑料资源',
+        adult: true
+    },
+    nxx: {
+        api: 'https://Naixxzy.com/api.php/provide/vod',
+        name: '奶香香',
+        adult: true
+    },
+    dbzy: {
+        api: 'https://caiji.dbzy5.com/api.php/provide/vod/at/josn',
+        name: '豆瓣资源',
+        adult: true
+    },
+    hhzy: {
+        api: 'https://hhzyapi.com/api.php/provide/vod',
+        name: '豪华资源',
+        adult: true
+    },
+    hyzy: {
+        api: 'https://www.huyaapi.com/api.php/provide/vod/at/json',
+        name: '虎牙资源',
+        adult: true
+    },
+    hme2: {
+        api: 'https://json.heimuer.xyz/api.php/provide/vod',
+        name: '黑木耳',
+        adult: false
     }
-    //ARCHIVE https://telegra.ph/APIs-08-12
 };
 
 // 定义合并方法
